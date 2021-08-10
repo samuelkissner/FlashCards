@@ -19,6 +19,7 @@ namespace FlashCards
             Card currentCard;
             while (true)
             {
+                Console.Clear();
                 int randomNumber = random.Next(0, flashCards.Count - 1);
                 currentCard = (Card) flashCards[randomNumber];
 
