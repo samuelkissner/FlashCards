@@ -30,6 +30,7 @@ namespace FlashCards
             return randomCard;
         }
 
+
         public void discardCard(Card currentCard)
         {
             Cards.Remove(currentCard);
