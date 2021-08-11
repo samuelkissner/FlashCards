@@ -20,7 +20,7 @@ namespace FlashCards
 
                 if(currentCard == null)
                 {
-                    Console.WriteLine("The Card Pile is Empty!");
+                    Console.WriteLine("The Card Pile is Empty.");
                     Console.ReadLine();
                     break;
                 }
@@ -30,7 +30,20 @@ namespace FlashCards
                 Console.WriteLine(currentCard.Description);
                 Console.ReadLine();
 
-                flashCards.discardCard(currentCard);
+                string userInput = "";
+                Console.WriteLine("Discard current card? \"y\" or \"n\"");
+                while (true)
+                {
+                    
+                    userInput = Console.In.ReadLine();
+                    if (userInput == "y" || userInput == "n")
+                        break;
+                    else
+                        Console.WriteLine("please enter either \"y\" or \"n\"");
+                }
+                
+                if (userInput == "y")
+                    flashCards.discardCard(currentCard);
             }
         }
     }
