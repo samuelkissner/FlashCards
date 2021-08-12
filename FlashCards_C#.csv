@@ -1,0 +1,229 @@
+CONCEPT,DESCRIPTION
+Program.cs,Every console application starts with the Main() method of this class.
+using,The keyword used to reference .Net Framework namespaces.
+Ctrl + F5,"The keyboard shortcut used to compile and run a console application (can also click the ""Debug"" menu and then ""Start Without Debugging"".)"
+Keywords,"Reserved words that have special meaning for the compiler (however, they can be used as identifiers if '@' preceeds them). The different types in incldued: Modifier, Access Modifier, Statement, Method, Namespace, Operator, Access, Literal, Type, Contextual, and Query. "
+Modifier Keywords,"Keywords that indicate who can modify types and type members. They allow certains parts of a program from being modified by other parts of the program.
+
+abstract
+async
+const
+event
+extern
+new
+override
+partial
+readonly
+sealed
+static
+unsafe
+virtual
+volatile"
+Access Modifier Keywords,"Applied to the declaration of a class, method, property, field and other memebers. They define accessibillity of the class and its memebers. They include:
+
+public - any part of the program in the same assembly as well as any other assemby can access can access the type and its memebers.
+
+private - only code in the same class or struct can access the type and its members.
+
+internal - the default. Any part of the program in the same assembly can access the type and it's members.
+
+protected - only code within the class or struct as well as any classes that inherit this class as parent can access the type and its members."
+Statement Keywords,"keywords related to program flow. 
+
+if
+else
+switch
+case
+do
+for
+foreach
+in
+while
+break
+continue
+default
+goto
+return
+yield
+throw
+try
+catch
+finally
+checked
+unchecked
+fixed
+lock"
+Method Parameter Keywords,"keywords applied to method parameters. They inlcude: params, ref, out."
+Namespace Keywords,"keywords applied with the namespace and related operators. They include: using, . operator, :: operator, extern alias."
+Operator Keywords,"keywords that perform misc actions. They include:
+
+as
+await
+is
+new
+sizeof
+typeof
+stackalloc
+checked
+unchecked "
+Access Keywords,keywords used to access the containing class or the base class of an object or class. They include this and base.
+Literal Keywords,"keywords that apply to the current instance or value of an object. They include null, false, true, value, and void."
+Type Keywords,"keywords used for data types. They include: 
+
+bool
+byte
+char
+class
+decimal
+double
+enum
+float
+int
+long
+sbyte
+short
+string
+struct
+uint
+ulong
+ushort "
+Contextual Keywords,"keywords that aren't reserved and can be used as names/identifiers (won't turn blue like other reserved words). They are only a keyword in specific contexts and include:
+
+add
+var
+dynamic
+global
+set
+value 
+"
+Query Keywords,"A type of contextual keyword used in LINQ queries. They incldue:
+
+from
+where
+select
+group
+into
+orderby
+join
+let
+in
+on
+equals
+by
+ascending
+descending"
+C# Field,"A class-level variable that holds a value. Generally, it has the 'private' access modifier keyword applied to it."
+C# Constructor,"Method called for when creating an instance of a class. Has the following format: 
+
+<access modifier> className ({parameterType parameterName}){}"
+C# Method,"A class level function. Has the following format:
+
+
+{access modifier} {modifier} <return type> MethodName({parameterType paramenterName}){}"
+Property,Encapsulates a private field within a class. This private field can only be accessed from the getter and setter 
+Property Example,"private int _myPrivateField
+
+public int MyPublicProperty{
+     
+     get {return _myPrivateField;}
+     set {_myPrivateField = value;}
+
+}
+"
+Auto-Implemented Property Example,public int MyAutoImplementedProperty {get;set;}
+namespace,container for a set of related classes and other namespaces (analagous to a package in Java)
+namespace example,"namespace ThisIsANameSpace{
+
+      class ThisIsAClass{}
+
+}
+
+
+*fully qualified name of class: ""ThisIsANamespace.ThisIsAClass"""
+variable format,<data type> <name/identifier> = <value>
+Strongly Typed Language,"This means that once a variable's data type is declared, a value of a different data type cannot be assigned to the variable"
+var,"- allows creation of a method level varialbe that is implicitly typed
+- must be initialized when the variable is declared
+- can't declare mutliple var variables on the same line
+- can't use var variables as function parameters"
+C# Data Types,Reference and Value
+C# Value Types,"Simple (int, float, bool, char, etc), Enum, Struct, Nullable"
+C# Reference Types,"Class, Interface, Array, Delegate"
+Value Type Data Suffix,"some value types in C# require a suffix at the end of the value for the compiler to understand. These include:
+
+uint ui = 100u;
+float fl = 10.2f;
+long l = 45755452222222l;
+ulong ul = 45755452222222ul;
+double d = 11452222.555d;
+decimal mon = 1000.15m;"
+Default Values,"Every data type has a default value that you can assign to varaible using 'default'
+
+// C# 7.1 onwards
+int i = default; // 0
+float f = default;// 0
+decimal d = default;// 0
+bool b = default;// false
+char c = default;// '\0'"
+Implicict Data Type Conversion,"data types of lower precision can generally be implicitly converted to data types of higher precision. Example:
+
+
+int i = 345;
+float f = i;
+
+Console.WriteLine(f); //output: 345
+
+
+"
+Explicit Conversion,"Some data conversions require explicit instructions to the compiler. For example, converting an int to an unsigned int:
+
+public static void Main()
+{
+    int i = 100;
+    uint u = (uint) i;
+    Console.Write(i);
+}"
+Two Number Types in C#,Integer type and Floating-Point type
+Integer Number Types in C#,"byte, sbyte, short, ushort, int, uint, long, ulong "
+Floating-Point Number Types in C#,"float, double, decimal"
+Integer Number Type Range Formula,"- 2^(# of bits allocated for the data type) - 1 for unsigned
+- divide the above by two for signed range, subtract 1 for positive values"
+How to Include Special Characters in a string ,"This can be done in two ways:
+
+1. Preceed the special character with a backslash (escaping character)
+2. Preceed the entire string with an @ (however this doesn't work for quotes - they still require the escaping charater)"
+Difference between String vs string,"- String is a .Net Framework class and requires a reference to the 'System' namespace
+- string is a C# alias and doesn't require a reference to the 'System' namespace"
+StringBuilder,"Should be used instead of string when a string will be appeneded/modified several times. This is because strings are immutable in C#, so whenever a string is modified/concatenated, a new string object is created (which takes up memory.) StringBuilder solves this issue by dynamically expanding memory to accomodate the modified string."
+String Interpolation,"A better way to concatenate strings compared with the + operator. Adding a $ in front of the string allows the programmer to build a string with static strings and string variables. Example: 
+
+string firstName = ""James"";
+string lastName = ""Bond"";
+string code = ""007"";
+ 
+string fullName = $""Mr. {firstName} {lastName}, Code: {code}"";
+
+
+*** use two brackets if you want to include brackets in a static string portion of the interpolated string."
+DateTime,"A struct provided by C# to work with date and time. The default value is 01/01/0001 00:00:00, but various contructors can initialize the DateTime object with a specified value."
+Ticks,A way to express DateTime. It's the number of 100ns that have elapsed since 1/1/0001/ 00:00:00.000
+TimeSpan,a struct that represents time in Days.Hours:Minutes:Seconds.Miliseconds. Subtracting two DateTime instances will result in a TimeSpan instance.
+TryParse() and TryParseExact(),)
+struct,"- good for storing data (it's quick) but bad for transfering data to other objects (it's a value data type)
+- contructor needs parameters that assign values to all fields/properties
+- can't inherit or be inherited, but it can implement interfaces"
+enum,"Maps integer type number data types (byte, sbyte, short, ushort, int, uint, long, ulong) to strings. Used for better readability! Example:
+
+enum WeekDays
+{
+    Monday,     // 0
+    Tuesday,    // 1
+    Wednesday,  // 2
+    Thursday,   // 3
+    Friday,     // 4
+    Saturday,   // 5
+    Sunday      // 6
+}
+
+***these are the default values, but one can explicitly assign values and the preferred numeric data type. To convert between enum and int requires explicit conversion (casting)
+"
