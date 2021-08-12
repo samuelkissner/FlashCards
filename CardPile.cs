@@ -35,6 +35,11 @@ namespace FlashCards
         {
             Cards.Remove(currentCard);
         }
+
+        public void AddCardsToPile(string filePath)
+        {
+
+        }
         
         public void CreateDefaultCardPile()
         {

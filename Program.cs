@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.VisualBasic.FileIO;
+
 using System.Collections;
 
 namespace FlashCards
@@ -10,25 +10,9 @@ namespace FlashCards
         {
 
             CardPile flashCards = new CardPile();
+            flashCards.AddCardsToPile(@"C:\Software Engineering\Personal Projects\Repos\FlashCards\FlashCards_C#.csv");
 
-            var path = @"C:\Software Engineering\Personal Projects\Repos\FlashCards\FlashCards_C#.csv";
-            using (TextFieldParser csvParser = new TextFieldParser(path))
-            {
-                csvParser.SetDelimiters(new string[] { "," });
-                csvParser.HasFieldsEnclosedInQuotes = true;
-
-                // Skip the row with the column names
-                csvParser.ReadLine();
-
-                while (!csvParser.EndOfData)
-                {
-                    // Read current line fields, pointer moves to the next line.
-                    string[] fields = csvParser.ReadFields();
-                    string concept= fields[0];
-                    string description = fields[1];
-                    flashCards.Cards.Add(new Card(concept, description));
-                }
-            }
+            
 
             Card currentCard;
 
