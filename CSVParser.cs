@@ -9,31 +9,26 @@ namespace FlashCards
     {
 
         TextFieldParser csvParser;
-        ArrayList Cards;
+        ArrayList Records;
 
         public CSVParser(string filePath)
         {
             csvParser = new TextFieldParser(filePath);
-            Cards = new ArrayList();
+            Records = new ArrayList();
         }
-        public ArrayList parse()
+        public ArrayList parseCSVRecords()
         {
-
             using (csvParser)
             {
                 prepareCVSFileForParsing();
 
                 while (!csvParser.EndOfData)
                 {
-                    ProcessCSVRecord();
+                    AddCSVLineToRecords();
                 }
             }
-
-
-            return Cards;
+            return Records;
         }
-
-
         public void prepareCVSFileForParsing()
         {
             csvParser.SetDelimiters(new string[] { "," });
@@ -43,13 +38,13 @@ namespace FlashCards
             csvParser.ReadLine();
         }
 
-        public void ProcessCSVRecord()
+        public void AddCSVLineToRecords()
         {
             // Read current line fields, pointer moves to the next line.
             string[] fields = csvParser.ReadFields();
             string concept = fields[0];
             string description = fields[1];
-            flashCards.Cards.Add(new Card(concept, description));
+            Records.Add(new Card(concept, description));
         }
          
     }

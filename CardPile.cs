@@ -38,7 +38,8 @@ namespace FlashCards
 
         public void AddCardsToPile(string filePath)
         {
-
+            CSVParser csvParser = new CSVParser(filePath);
+            Cards = csvParser.parseCSVRecords();
         }
         
         public void CreateDefaultCardPile()

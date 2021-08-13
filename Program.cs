@@ -11,11 +11,7 @@ namespace FlashCards
 
             CardPile flashCards = new CardPile();
             flashCards.AddCardsToPile(@"C:\Software Engineering\Personal Projects\Repos\FlashCards\FlashCards_C#.csv");
-
-            
-
             Card currentCard;
-
 
             while (true)
             {
