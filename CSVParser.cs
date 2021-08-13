@@ -16,7 +16,7 @@ namespace FlashCards
             csvParser = new TextFieldParser(filePath);
             Records = new ArrayList();
         }
-        public ArrayList parseCSVRecords()
+        public ArrayList AddCSVRecordsToArrayList()
         {
             using (csvParser)
             {
@@ -24,7 +24,7 @@ namespace FlashCards
 
                 while (!csvParser.EndOfData)
                 {
-                    AddCSVLineToRecords();
+                    AddCSVLineToArrayList();
                 }
             }
             return Records;
@@ -38,7 +38,7 @@ namespace FlashCards
             csvParser.ReadLine();
         }
 
-        public void AddCSVLineToRecords()
+        public void AddCSVLineToArrayList()
         {
             // Read current line fields, pointer moves to the next line.
             string[] fields = csvParser.ReadFields();

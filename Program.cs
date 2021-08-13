@@ -6,32 +6,34 @@ namespace FlashCards
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+            CardPile flashCards = new CardPile(@"C:\Software Engineering\Personal Projects\Repos\FlashCards\FlashCards_C#.csv");
+            CycleThroughCards(flashCards);
+            ConsoleDisplay.DisplayAndWait("The Card Pile is Empty.");
+        }
 
-            CardPile flashCards = new CardPile();
-            flashCards.AddCardsToPile(@"C:\Software Engineering\Personal Projects\Repos\FlashCards\FlashCards_C#.csv");
-            Card currentCard;
-
+        static void CycleThroughCards(CardPile flashCards)
+        {
             while (true)
             {
-                Console.Clear();
-                currentCard = flashCards.getRandomCard();
-
-                if(currentCard == null)
-                {
-                    ConsoleDisplay.DisplayAndWait("The Card Pile is Empty.");
-                    break;
-                }
+                Card currentCard = flashCards.getRandomCard();
+                if (currentCard==null)
+                    return;
                 
-                ConsoleDisplay.DisplayAndWait(currentCard.Concept);
-                ConsoleDisplay.DisplayAndWait(currentCard.Description);
-          
+                DisplayCurrentCard(currentCard);
 
                 string userInput = UserPrompts.askToDiscard();
                 if (userInput == "y")
                     flashCards.discardCard(currentCard);
             }
+        }
+        static void DisplayCurrentCard(Card currentCard)
+        {
+            Console.Clear();
+            ConsoleDisplay.DisplayAndWait(currentCard.Concept);
+            ConsoleDisplay.DisplayAndWait(currentCard.Description);
         }
     }
 }

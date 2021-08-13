@@ -7,10 +7,7 @@ namespace FlashCards
     class ConsoleDisplay
     {
 
-        public static void DisplayNextCard()
-        {
-
-        }
+       
         public static void DisplayAndWait(string content)
         {
             Console.WriteLine(content);
