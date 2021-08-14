@@ -208,7 +208,17 @@ string fullName = $""Mr. {firstName} {lastName}, Code: {code}"";
 DateTime,"A struct provided by C# to work with date and time. The default value is 01/01/0001 00:00:00, but various contructors can initialize the DateTime object with a specified value."
 Ticks,A way to express DateTime. It's the number of 100ns that have elapsed since 1/1/0001/ 00:00:00.000
 TimeSpan,a struct that represents time in Days.Hours:Minutes:Seconds.Miliseconds. Subtracting two DateTime instances will result in a TimeSpan instance.
-TryParse() and TryParseExact(),)
+TryParse() and TryParseExact(),"best way to convert string to date (returns false when not valid date). Example:
+
+var str = ""5/12/2020"";
+DateTime dt;
+            
+var isValidDate = DateTime.TryParse(str, out dt);
+
+if(isValidDate)
+    Console.WriteLine(dt);
+else
+    Console.WriteLine($""{str} is not a valid date string"");"
 struct,"- good for storing data (it's quick) but bad for transfering data to other objects (it's a value data type)
 - contructor needs parameters that assign values to all fields/properties
 - can't inherit or be inherited, but it can implement interfaces"
@@ -227,3 +237,49 @@ enum WeekDays
 
 ***these are the default values, but one can explicitly assign values and the preferred numeric data type. To convert between enum and int requires explicit conversion (casting)
 "
+Retrieving a String from String Builder Example,"StringBuilder sb = new StringBuilder(""Hello World"");
+Console.WriteLine(sb.toString());"
+Anonymous Types,"- read-only (immutable)
+- live within the scope of a method and can't be returned
+- used mainly in LINQ select statements to get a subset of properties for a list of objects (saves on memory and extraneous code)
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        IList<Student> studentList = new List<Student>() { 
+            new Student() { StudentID = 1, StudentName = ""John"", age = 18 },
+            new Student() { StudentID = 2, StudentName = ""Steve"",  age = 21 },
+            new Student() { StudentID = 3, StudentName = ""Bill"",  age = 18 },
+            new Student() { StudentID = 4, StudentName = ""Ram"" , age = 20  },
+            new Student() { StudentID = 5, StudentName = ""Ron"" , age = 21 } 
+        };
+
+        var students = from s in studentList
+                       select new { Id = s.StudentID, Name = s.StudentName };
+
+        foreach(var stud in students)
+            Console.WriteLine(stud.Id + ""-"" + stud.Name);
+    }
+}
+
+public class Student
+{
+    public int StudentID { get; set; }
+    public string StudentName { get; set; }
+    public int age { get; set; }
+}"
+Dynamic Type,"- type checked at runtime (compiler types it as an object class)
+- is implicitly typed based on the value of the variable
+- type can change within a program (how can we say C# is strongly-typed then ?)
+- declared with the dynamic keyword
+
+
+dynamic d1 = 100;
+int i = d1;
+                
+d1 = ""Hello"";
+string greet = d1;
+                
+d1 = DateTime.Now;
+DateTime dt = d1;"

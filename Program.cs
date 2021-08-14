@@ -16,12 +16,15 @@ namespace FlashCards
 
         static void CycleThroughCards(CardPile flashCards)
         {
+            Card currentCard;
             while (true)
             {
-                Card currentCard = flashCards.getRandomCard();
+                Console.Clear();
+                currentCard = flashCards.getRandomCard();
                 if (currentCard==null)
                     return;
-                
+
+                DisplayCardsRemaining(flashCards);
                 DisplayCurrentCard(currentCard);
 
                 string userInput = UserPrompts.askToDiscard();
@@ -29,11 +32,18 @@ namespace FlashCards
                     flashCards.discardCard(currentCard);
             }
         }
+
+        static void DisplayCardsRemaining(CardPile flashCards)
+        {
+            Console.WriteLine($"({flashCards.Cards.Count} Remaining)");
+            Console.WriteLine();
+        }
         static void DisplayCurrentCard(Card currentCard)
         {
-            Console.Clear();
             ConsoleDisplay.DisplayAndWait(currentCard.Concept);
             ConsoleDisplay.DisplayAndWait(currentCard.Description);
         }
+
+       
     }
 }
